@@ -1,11 +1,13 @@
 "use client";
 
 import { Check, ChevronDown, ChevronUp, Copy, Eye, Layers, LoaderCircle, Users, Wifi, WifiOff } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { type FormEvent, useContext, useEffect, useMemo, useState } from "react";
 
 import { CardInfoDialog } from "@/components/table/card-info";
+import { useLanguage } from "@/components/language-provider";
 import { CardStack } from "@/components/table/card-stack";
 import { CarriedCard } from "@/components/table/carried-card";
 import { EmptyHand } from "@/components/table/empty-hand";
@@ -41,6 +43,7 @@ import { HandUtilities } from "./table-controls";
 import { ClearVoteBanner, TableMenu } from "./table-menu";
 
 export default function TableRoom() {
+  const { t } = useLanguage();
   const params = useParams<{ code: string }>();
   const code = String(params.code ?? "").toUpperCase();
   const { ready, seatId, table, status, pending, fatal, join, send, setAnchor, setDrag, setCarry, ping, remoteDrags, remoteCarries, pings, handsStore } = useTable(code);
@@ -152,7 +155,8 @@ export default function TableRoom() {
       )}
     >
       <header className="flex items-center gap-2.5 bg-felt-deep/70 px-4 text-sm">
-        <b className="text-base">Bàn Bài</b>
+        <Image src="/favicon.svg" alt="" aria-hidden="true" width={28} height={28} className="size-7 shrink-0" />
+        <b className="text-base">{t("appName")}</b>
         <Button variant="ghost" size="sm" onClick={copyInvite} className="tracking-widest tabular-nums">
           {copied ? <Check /> : <Copy />}{code}
         </Button>

@@ -1,5 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#17241f"/>
-  <path d="M20 12h27a6 6 0 0 1 6 6v31a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6V18a6 6 0 0 1 6-6Z" fill="#fffaf2" transform="rotate(6 33 34)"/>
-  <path d="M31.8 22c-5 5.4-10 8.5-10 13.1 0 3.3 2.4 5.5 5.6 5.5 1.3 0 2.4-.4 3.2-1.1-.2 2.2-1 4.4-2.7 6.5h8c-1.7-2.1-2.5-4.3-2.7-6.5.8.7 1.9 1.1 3.2 1.1 3.2 0 5.6-2.2 5.6-5.5 0-4.6-5-7.7-10.2-13.1Z" fill="#ff6542"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="6 6 52 52" role="img" aria-label="Two playing cards">
+  <g transform="rotate(-15 27 33)">
+    <rect x="13" y="13" width="28" height="40" rx="4.5" fill="#d9573d" stroke="#173a30" stroke-width="1.8"/>
+    <rect x="16" y="16" width="22" height="34" rx="2.5" fill="none" stroke="#ffd6b7" stroke-width="1.5"/>
+    <path d="M27 27l5 6-5 6-5-6z" fill="#ffd6b7"/>
+  </g>
+  <g transform="rotate(11 39 32)">
+    <rect x="25" y="10" width="28" height="42" rx="4.5" fill="#fffaf0" stroke="#173a30" stroke-width="1.8"/>
+    <path d="M31.8 22c-5 5.4-10 8.5-10 13.1 0 3.3 2.4 5.5 5.6 5.5 1.3 0 2.4-.4 3.2-1.1-.2 2.2-1 4.4-2.7 6.5h8c-1.7-2.1-2.5-4.3-2.7-6.5.8.7 1.9 1.1 3.2 1.1 3.2 0 5.6-2.2 5.6-5.5 0-4.6-5-7.7-10.2-13.1Z" transform="translate(7 0)" fill="#173a30"/>
+  </g>
 </svg>

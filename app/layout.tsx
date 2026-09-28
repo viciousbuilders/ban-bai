@@ -12,8 +12,8 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Bàn Bài | Bàn chơi bài trực tuyến",
-  description: "Tạo phòng, mời bạn bè và cùng chơi bài trực tuyến.",
+  title: "Card Table | Play Cards Together Online",
+  description: "Create a private card table, invite friends, and play together online.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${beVietnamPro.variable} antialiased`}><LanguageProvider>{children}<Toaster position="top-center" /></LanguageProvider></body>
     </html>
   );

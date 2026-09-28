@@ -1,26 +1,34 @@
 "use client";
 
-import { createContext, useContext, useMemo, useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
+import { createContext, useContext, useEffect, useMemo, useSyncExternalStore } from "react";
 
 export type Language = "vi" | "en";
 
 const copy: Record<Language, Record<string, string>> = {
   vi: {
+    appName: "Bàn Bài",
     chooseDeck: "Chọn bộ bài",
     classicCards: "Bài Tây",
+    createTab: "Tạo bàn",
     createError: "Không thể tạo bàn chơi.",
     createTable: "Tạo bàn mới",
     english: "English",
+    entryChoice: "Tạo hoặc vào bàn chơi",
     heroIntro: "Tạo bàn riêng, gửi một đường link và chơi theo luật của bạn.",
     heroTitle: "Chơi bài cùng nhau.",
     home: "Trang chủ Bàn Bài",
+    joinTab: "Vào bàn",
     joinError: "Không thể vào phòng này.",
     joinFriends: "Đã có mã phòng?",
     joinRoom: "Vào phòng",
+    joiningTable: "Đang vào bàn…",
     language: "Ngôn ngữ",
     namePlaceholder: "Ví dụ: Minh",
     noAccount: "Không cần tài khoản",
+    pageTitle: "Bàn Bài | Bàn chơi bài trực tuyến",
     roomCode: "MÃ PHÒNG",
+    roomCodeHint: "Nhập mã 6 ký tự bạn bè đã gửi.",
     sandbox52: "Bộ bài tự do 52 lá",
     settingTable: "Đang dọn bàn…",
     startPlaying: "Bắt đầu",
@@ -29,31 +37,38 @@ const copy: Record<Language, Record<string, string>> = {
     yourName: "Tên của bạn",
   },
   en: {
+    appName: "Card Table",
     chooseDeck: "Choose a deck",
     classicCards: "Classic cards",
+    createTab: "Create",
     createError: "Could not create the table.",
     createTable: "Create new table",
     english: "English",
-    heroIntro: "Create a private table, share one link, and play by your own rules.",
+    entryChoice: "Create or join a table",
+    heroIntro: "Create a table, share a link, play your way.",
     heroTitle: "Play cards together.",
-    home: "Bàn Bài home",
+    home: "Card Table home",
+    joinTab: "Join",
     joinError: "Could not join that room.",
     joinFriends: "Already have a room code?",
     joinRoom: "Join room",
+    joiningTable: "Joining table…",
     language: "Language",
     namePlaceholder: "e.g. Minh",
     noAccount: "No account needed",
+    pageTitle: "Card Table | Play Cards Together Online",
     roomCode: "ROOM CODE",
-    sandbox52: "52-card sandbox",
+    roomCodeHint: "Enter the 6-character code shared by your friend.",
+    sandbox52: "52-card deck",
     settingTable: "Setting the table…",
     startPlaying: "Get started",
-    tamDeck: "108-card standard deck",
+    tamDeck: "108-card deck",
     vietnamese: "Tiếng Việt",
     yourName: "Your name",
   },
 };
 
-const LanguageContext = createContext<Language>("vi");
+const LanguageContext = createContext<Language>("en");
 const STORAGE_KEY = "ban-bai:language";
 
 function subscribe(onChange: () => void) {
@@ -66,18 +81,23 @@ function subscribe(onChange: () => void) {
 }
 
 function readLanguage(): Language {
-  return window.localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "vi";
+  return window.localStorage.getItem(STORAGE_KEY) === "vi" ? "vi" : "en";
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const language = useSyncExternalStore(subscribe, readLanguage, () => "vi" as Language);
+  const pathname = usePathname();
+  const language = useSyncExternalStore(subscribe, readLanguage, () => "en" as Language);
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.title = copy[language].pageTitle;
+  }, [language, pathname]);
   return <LanguageContext.Provider value={language}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {
   const language = useContext(LanguageContext);
   return useMemo(
-    () => ({ language, t: (key: string) => copy[language][key] ?? copy.vi[key] ?? key }),
+    () => ({ language, t: (key: string) => copy[language][key] ?? copy.en[key] ?? key }),
     [language],
   );
 }
@@ -101,7 +121,7 @@ export function LanguageToggle({ compact = false }: { compact?: boolean }) {
           type="button"
           onClick={() => setLanguage(option)}
           aria-pressed={language === option}
-          className={`rounded-[7px] px-2 text-[0.7rem] font-extrabold tracking-wide uppercase transition-colors focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-gilt ${compact ? "h-7 min-w-[1.875rem]" : "h-8 min-w-9"} ${
+          className={`cursor-pointer rounded-[7px] px-2 text-[0.7rem] font-extrabold tracking-wide uppercase transition-colors focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-gilt ${compact ? "h-7 min-w-[1.875rem]" : "h-10 min-w-11"} ${
             language === option ? "bg-foreground text-[#fffdf7] shadow-sm" : "text-[#66716b] hover:bg-[#13755a]/10 hover:text-[#125f49]"
           }`}
         >
