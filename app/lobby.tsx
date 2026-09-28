@@ -85,12 +85,12 @@ export default function Lobby() {
           </p>
           <div aria-hidden="true" className="relative mx-auto mt-9 hidden h-[210px] max-w-[540px] overflow-hidden rounded-[2rem] border-[10px] border-[#67472b] bg-[radial-gradient(ellipse_at_50%_30%,#188362,#0c624a_68%,#084833)] shadow-[0_18px_36px_rgba(46,38,23,0.20),inset_0_0_0_3px_#a27743] lg:block">
             <div className="absolute inset-3 rounded-[1.4rem] border border-white/15" />
-            <div className="absolute left-[14%] top-[30%] h-[112px] w-[78px] -rotate-18 rounded-lg border-[3px] border-[#fff8e8] bg-[#173a30] shadow-[0_12px_16px_rgba(0,0,0,0.28)]"><div className="m-2 grid h-[calc(100%-1rem)] place-items-center rounded border border-[#d9b45a]/70 font-serif text-4xl text-[#f4c95d]">♠</div></div>
-            <div className="absolute left-[35%] top-[22%] h-[128px] w-[89px] rotate-[-4deg] rounded-lg border-[3px] border-white bg-[#fff9ea] text-[#ce503c] shadow-[0_14px_18px_rgba(0,0,0,0.25)]">
+            <div className="absolute left-[14%] top-[22%] h-[112px] w-[78px] -rotate-18 rounded-lg border-[3px] border-[#fff8e8] bg-[#173a30] shadow-[0_12px_16px_rgba(0,0,0,0.28)]"><div className="m-2 grid h-[calc(100%-1rem)] place-items-center rounded border border-[#d9b45a]/70 font-serif text-4xl text-[#f4c95d]">♠</div></div>
+            <div className="absolute left-[35%] top-[14%] h-[128px] w-[89px] rotate-[-4deg] rounded-lg border-[3px] border-white bg-[#fff9ea] text-[#ce503c] shadow-[0_14px_18px_rgba(0,0,0,0.25)]">
               <span className="absolute inset-0 grid place-items-center font-serif text-5xl">♥</span>
               <span className="absolute left-2 top-2 text-xl font-bold leading-none">A<span className="block text-base">♥</span></span>
             </div>
-            <div className="absolute left-[62%] top-[25%] h-[128px] w-[89px] rotate-[13deg] rounded-lg border-[3px] border-white bg-[#fff9ea] text-[#17241f] shadow-[0_14px_18px_rgba(0,0,0,0.25)]">
+            <div className="absolute left-[62%] top-[17%] h-[128px] w-[89px] rotate-[13deg] rounded-lg border-[3px] border-white bg-[#fff9ea] text-[#17241f] shadow-[0_14px_18px_rgba(0,0,0,0.25)]">
               <span className="absolute inset-0 grid place-items-center font-serif text-5xl">♠</span>
               <span className="absolute left-2 top-2 text-xl font-bold leading-none">K<span className="block text-base">♠</span></span>
             </div>
