@@ -18,7 +18,7 @@ type EntryMode = "create" | "join";
 
 const DECKS: Array<{ id: TableDeck; mark: string; title?: string; titleKey?: string; noteKey: string }> = [
   { id: "classic-52", mark: "♠", titleKey: "classicCards", noteKey: "sandbox52" },
-  { id: "tam-quoc-sat", mark: "殺", title: "Tam Quốc Sát", noteKey: "tamDeck" },
+  { id: "tam-quoc-sat", mark: "殺", titleKey: "tamQuocSat", noteKey: "tamDeck" },
 ];
 
 export default function Lobby() {

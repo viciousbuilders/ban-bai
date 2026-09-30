@@ -4,11 +4,11 @@ A lightweight online card table for 1–10 friends. Players join with a room lin
 
 ## Features
 
-- Selectable Classic 52-card and Tam Quốc Sát 108-card decks
+- Selectable Classic 52-card and Sanguosha 108-card decks
 - Shared table with private player hands
 - Create and join rooms by link or six-character code
 - Deal, shuffle, draw, play, take back, and reset actions
-- A shared, shuffled Tướng pile whose cards draw into private hands in Tam Quốc Sát rooms
+- A shared, shuffled Tướng pile whose cards draw into private hands in Sanguosha rooms
 - Live rooms over websockets, one Cloudflare Durable Object per table
 - Responsive desktop and mobile interface
 - WebMCP actions for reading the table, drawing, and playing cards
@@ -91,6 +91,6 @@ Everything deploys from `main`. Nobody has to hold a credential to contribute, a
 ## Game modes
 
 - **Classic cards:** a general-purpose 52-card sandbox.
-- **Tam Quốc Sát:** the 108-card standard deck with Vietnamese card names, suits, ranks, and licensed LangKhach artwork. It currently uses the same free-table actions as Classic cards; rule enforcement can be added as a separate engine later.
+- **Sanguosha:** the 108-card standard deck with Vietnamese card names, suits, ranks, and licensed LangKhach artwork. It currently uses the same free-table actions as Classic cards; rule enforcement can be added as a separate engine later.
 
 Artwork attribution and redistribution context are retained in `public/tam-quoc-sat/NOTICE.md`.
