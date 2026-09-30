@@ -2,8 +2,9 @@
 
 import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useMemo, useSyncExternalStore } from "react";
+import { PAGE_TITLE, type Language } from "@/lib/language";
 
-export type Language = "vi" | "en";
+export type { Language };
 
 const copy: Record<Language, Record<string, string>> = {
   vi: {
@@ -26,7 +27,7 @@ const copy: Record<Language, Record<string, string>> = {
     language: "Ngôn ngữ",
     namePlaceholder: "Ví dụ: Minh",
     noAccount: "Không cần tài khoản",
-    pageTitle: "Bàn Bài | Bàn chơi bài trực tuyến",
+    pageTitle: PAGE_TITLE.vi,
     roomCode: "MÃ PHÒNG",
     roomCodeHint: "Nhập mã 6 ký tự bạn bè đã gửi.",
     sandbox52: "Bộ bài tự do 52 lá",
@@ -57,7 +58,7 @@ const copy: Record<Language, Record<string, string>> = {
     language: "Language",
     namePlaceholder: "e.g. Minh",
     noAccount: "No account needed",
-    pageTitle: "Card Table | Play Cards Together Online",
+    pageTitle: PAGE_TITLE.en,
     roomCode: "ROOM CODE",
     roomCodeHint: "Enter the 6-character code shared by your friend.",
     sandbox52: "52-card deck",
@@ -82,13 +83,18 @@ function subscribe(onChange: () => void) {
   };
 }
 
-function readLanguage(): Language {
-  return window.localStorage.getItem(STORAGE_KEY) === "vi" ? "vi" : "en";
+function readStoredLanguage(): Language | null {
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  return stored === "vi" || stored === "en" ? stored : null;
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+export function LanguageProvider({ defaultLanguage, children }: { defaultLanguage: Language; children: React.ReactNode }) {
   const pathname = usePathname();
-  const language = useSyncExternalStore(subscribe, readLanguage, () => "en" as Language);
+  const language = useSyncExternalStore(
+    subscribe,
+    () => readStoredLanguage() ?? defaultLanguage,
+    () => defaultLanguage,
+  );
   useEffect(() => {
     document.documentElement.lang = language;
     document.title = copy[language].pageTitle;

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
+import { headers } from "next/headers";
 import { Toaster } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/components/language-provider";
+import { languageForHost, PAGE_DESCRIPTION, PAGE_TITLE } from "@/lib/language";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -11,23 +13,31 @@ const beVietnamPro = Be_Vietnam_Pro({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Card Table | Play Cards Together Online",
-  description: "Create a private card table, invite friends, and play together online.",
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-  },
-};
+async function requestLanguage() {
+  return languageForHost((await headers()).get("host"));
+}
 
-export default function RootLayout({
+export async function generateMetadata(): Promise<Metadata> {
+  const language = await requestLanguage();
+  return {
+    title: PAGE_TITLE[language],
+    description: PAGE_DESCRIPTION[language],
+    icons: {
+      icon: "/favicon.svg",
+      shortcut: "/favicon.svg",
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const language = await requestLanguage();
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${beVietnamPro.variable} antialiased`}><LanguageProvider>{children}<Toaster position="top-center" /></LanguageProvider></body>
+    <html lang={language} suppressHydrationWarning>
+      <body className={`${beVietnamPro.variable} antialiased`}><LanguageProvider defaultLanguage={language}>{children}<Toaster position="top-center" /></LanguageProvider></body>
     </html>
   );
 }
