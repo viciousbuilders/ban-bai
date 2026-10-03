@@ -150,7 +150,7 @@ export default function Lobby() {
           </svg>
           <span className="sr-only">love</span>
           <span>by</span>
-          <a href="https://vietbrosinaus.com" className="font-bold text-[#94502e] underline underline-offset-2 hover:text-[#703817] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#13755a]">vietbrosinaus</a>
+          <a href="https://vietbrosinaus.com" className="font-bold text-[#94502e] underline underline-offset-2 hover:text-[#703817] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#13755a]">viciousbuilders</a>
         </span>
       </footer>
     </main>
